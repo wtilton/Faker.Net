@@ -1,18 +1,11 @@
 using System.Text.RegularExpressions;
-using Faker.Extensions;
 using NUnit.Framework;
 
 namespace Faker.Tests
 {
 	[TestFixture]
 	public class LoremTests
-	{
-		[Test]
-		public void TestParagraph()
-		{
-			Assert.IsTrue(Regex.IsMatch(Lorem.GetParagraph(), @"[ a-z]+"));
-		}
-		
+	{		
 		[Test]
 		public void TestSentence()
 		{
@@ -28,18 +21,12 @@ namespace Faker.Tests
 		[Test]
 		public void TestParagraphs()
 		{
-			Assert.IsTrue(Regex.IsMatch(Lorem.GetParagraphs().Join(" "), @"[ a-z]+"));
+			Assert.IsTrue(Regex.IsMatch(Lorem.GetParagraphs(), @"[ a-z]+"));
 		}
 		
 		public void TestSentences()
 		{
-			Assert.IsTrue(Regex.IsMatch(Lorem.GetSentences().Join(" "), @"[ a-z]+"));
-		}
-		
-		[Test]
-		public void TestWords()
-		{
-			Assert.IsTrue(Regex.IsMatch(Lorem.GetWords().Join(" "), @"[ a-z]+"));
+			Assert.IsTrue(Regex.IsMatch(Lorem.GetSentences(), @"[ a-z]+"));
 		}
 	}
 }

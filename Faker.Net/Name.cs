@@ -1,71 +1,40 @@
 ﻿using System;
-using Faker.Extensions;
 
 namespace Faker
 {
-    public static class Name
-    {
-        public static string GetName()
-        {
-            switch (FakerRandom.Rand.Next(10))
-            {
-                case 0: return GetPrefix() + " " + GetFirstName() + " " + GetLastName();
-                case 1: return GetFirstName() + " " + GetLastName() + " " + GetSuffix();
-                default: return GetFirstName() + " " + GetLastName();
-            }
-        }
+	public static class Name
+	{
+		public static string GetName()
+		{
+			switch (FakerRandom.Rand.Next(10))
+			{
+				case 0: return GetPrefix() + " " + GetFirstName() + " " + GetLastName();
+				case 1: return GetFirstName() + " " + GetLastName() + " " + GetSuffix();
+				default: return GetFirstName() + " " + GetLastName();
+			}
+		}
 
-        public static string GetFirstName()
-        {
-            return FIRST_NAMES.Rand();
-        }
+		public static string GetFirstName()
+		{
+			return FIRST_NAMES.Rand();
+		}
 
-        public static string GetLastName()
-        {
-            return LAST_NAMES.Rand();
-        }
+		public static string GetLastName()
+		{
+			return LAST_NAMES.Rand();
+		}
 
-        public static string GetPrefix()
-        {
-            return PREFIXES.Rand();
-        }
+		public static string GetPrefix()
+		{
+			return PREFIXES.Rand();
+		}
 
-        public static string GetSuffix()
-        {
-            return SUFFIXES.Rand();
-        }
-		
-		[Obsolete]
-		public static string name()
-        {
-			return GetName();
-        }
-		
-		[Obsolete]
-        public static string FirstName()
-        {
-			return GetFirstName();
-        }
-		
-		[Obsolete]
-        public static string LastName()
-        {
-			return GetLastName();
-        }
-		
-		[Obsolete]
-        public static string Prefix()
-        {
-			return GetPrefix();
-        }
-		
-		[Obsolete]
-        public static string Suffix()
-        {
-			return GetSuffix();
-        }
+		public static string GetSuffix()
+		{
+			return SUFFIXES.Rand();
+		}
 
-        static readonly string[] FIRST_NAMES = new[] {"Aaliyah", "Aaron", "Abagail", "Abbey", "Abbie", "Abbigail", "Abby", "Abdiel", "Abdul",
+		static readonly string[] FIRST_NAMES = new[] {"Aaliyah", "Aaron", "Abagail", "Abbey", "Abbie", "Abbigail", "Abby", "Abdiel", "Abdul",
 "Abdullah", "Abe", "Abel", "Abelardo", "Abigail", "Abigale", "Abigayle", "Abner", "Abraham", "Ada", "Adah",
 "Adalberto", "Adaline", "Adam", "Adan", "Addie", "Addison", "Adela", "Adelbert", "Adele", "Adelia",
 "Adeline", "Adell", "Adella", "Adelle", "Aditya", "Adolf", "Adolfo", "Adolph", "Adolphus", "Adonis",
@@ -354,7 +323,7 @@ namespace Faker
 "Zachery", "Zack", "Zackary", "Zackery", "Zakary", "Zander", "Zane", "Zaria", "Zechariah", "Zelda", "Zella",
 "Zelma", "Zena", "Zetta", "Zion", "Zita", "Zoe", "Zoey", "Zoie", "Zoila", "Zola", "Zora", "Zula)",
 ""};
-        static readonly string[] LAST_NAMES = new[] {"Abbott", "Abernathy", "Abshire", "Adams", "Altenwerth", "Anderson",
+		static readonly string[] LAST_NAMES = new[] {"Abbott", "Abernathy", "Abshire", "Adams", "Altenwerth", "Anderson",
 "Ankunding", "Armstrong", "Auer", "Aufderhar", "Bahringer", "Bailey", "Balistreri", "Barrows",
 "Bartell", "Bartoletti", "Barton", "Bashirian", "Batz", "Bauch", "Baumbach", "Bayer", "Beahan", "Beatty",
 "Bechtelar", "Becker", "Bednar", "Beer", "Beier", "Berge", "Bergnaum", "Bergstrom", "Bernhard",
@@ -405,8 +374,8 @@ namespace Faker
 "Witting", "Wiza", "Wolf", "Wolff", "Wuckert", "Wunsch", "Wyman", "Yost", "Yundt", "Zboncak", "Zemlak",
 "Ziemann", "Zieme", "Zulauf)"};
 
-        static readonly string[] PREFIXES = new[] { "Mr.", "Mrs.", "Ms.", "Miss", "Dr." };
+		static readonly string[] PREFIXES = new[] { "Mr.", "Mrs.", "Ms.", "Miss", "Dr." };
 
-        static readonly string[] SUFFIXES = new[] { "Jr.", "Sr.", "I", "II", "III", "IV", "V", "MD", "DDS", "PhD", "DVM" };
-    }
+		static readonly string[] SUFFIXES = new[] { "Jr.", "Sr.", "I", "II", "III", "IV", "V", "MD", "DDS", "PhD", "DVM" };
+	}
 }

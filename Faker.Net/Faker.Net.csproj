@@ -37,17 +37,22 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="Company.cs" />
+    <Compile Include="Date.cs" />
     <Compile Include="Education.cs" />
-    <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\NumberExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="NumberExtensions.cs" />
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="FakerRandom.cs" />
     <Compile Include="GeoLocation.cs" />
     <Compile Include="Internet.cs" />
     <Compile Include="Lorem.cs" />
     <Compile Include="Name.cs" />
+    <Compile Include="Number.cs" />
     <Compile Include="PhoneNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

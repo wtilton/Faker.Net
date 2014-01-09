@@ -1,80 +1,95 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Faker.Extensions;
 
 namespace Faker
 {
-    public static class Lorem
-    {
-        public static string GetWord()
-        {
-            return WORDS.Rand();
-        }
+	public static class Lorem
+	{
+		public static string GetWord()
+		{
+			return WORDS.Rand();
+		}
 
-        public static IEnumerable<string> GetWords(int num = 3)
-        {
-            return WORDS.RandPick(num);
-        }
+		public static string GetWords(int number)
+		{
+			return 1.To(number).Select(w => GetWord()).Join(" ");
+		}
 
-        public static string GetSentence(int wordCount = 4)
-        {
-            var s = GetWords(wordCount + FakerRandom.Rand.Next(6));
-            return s.Join(" ").ToUpper() + ".";
-        }
+		public static string Words(this int number)
+		{
+			return GetWords(number);
+		}
 
-        public static IEnumerable<string> GetSentences(int sentenceCount = 3)
-        {
-            return 1.To(sentenceCount).Select(item => GetSentence());
-        }
+		private static IEnumerable<string> getWords(int maxWords = 3)
+		{
+			return WORDS.RandPick(maxWords);
+		}
 
-        public static string GetParagraph(int sentenceCount = 3)
-        {
-            return GetSentences(sentenceCount + FakerRandom.Rand.Next(3)).Join(" ");
-        }
+		public static string GetSentence(int wordCount = 4)
+		{
+			var s = getWords(wordCount);
+			var sentence = s.Join(" ") + ".";
+			return char.ToUpper(sentence[0]) + sentence.Substring(1);
+		}
 
-        public static IEnumerable<string> GetParagraphs(int paragraphCount = 3)
-        {
-            return 1.To(paragraphCount).Select(item => GetParagraph());
-        }
-		
-		[Obsolete]
-		public static string Word()
-        {
-			return GetWord();
-        }
-		
-		[Obsolete]
-        public static IEnumerable<string> Words(int num = 3)
-        {
-			return GetWords(num);
-        }
-		
-		[Obsolete]
-        public static string Sentence(int wordCount = 4)
-        {
-			return GetSentence(wordCount);
-        }
-		
-		[Obsolete]
-        public static IEnumerable<string> Sentences(int sentenceCount = 3)
-        {
-			return GetSentences(sentenceCount);
-        }
-		
-		[Obsolete]
-        public static string Paragraph(int sentenceCount = 3)
-        {
-			return GetParagraph(sentenceCount);
-        }
-		
-		[Obsolete]
-        public static IEnumerable<string> Paragraphs(int paragraphCount = 3)
-        {
-			return GetParagraphs(paragraphCount);
-        }
+		/// <summary>
+		/// Here so you can get a random number between two numbers and pair it with a Lorem extension method. The same as calling Number.Between.
+		/// </summary>
+		/// <param name="min"></param>
+		/// <param name="max"></param>
+		/// <returns></returns>
+		public static int GetBetween(int min, int max)
+		{
+			return Number.Between(min, max);
+		}
 
-        static readonly string[] WORDS = new[] {"alias", "consequatur", "aut", "perferendis", "sit", "voluptatem", "accusantium",
+		/// <summary>
+		/// Usage 3.Sentences()
+		/// </summary>
+		/// <param name="number"></param>
+		/// <returns>Number of sentences specified</returns>
+		public static string Sentences(this int number)
+		{
+			return GetSentences(number);
+		}
+
+		/// <summary>
+		/// Usage 3.Paragraphs()
+		/// </summary>
+		/// <param name="number"></param>
+		/// <returns>Number of paragraphs specified</returns>
+		public static string Paragraphs(this int number)
+		{
+			return GetParagraphs(number);
+		}
+
+		private static IEnumerable<string> getSentences(int sentenceCount = 3)
+		{
+			return 1.To(sentenceCount).Select(item => GetSentence());
+		}
+
+		public static string GetSentences(int min, int max)
+		{
+			return getSentences(min + Number.Between(min, max - min)).Join(" ");
+		}
+
+		public static string GetSentences(int sentenceCount = 3)
+		{
+			return getSentences(sentenceCount).Join(" ");
+		}
+
+		public static string GetParagraphs(int paragraphCount = 3)
+		{
+			return "<p>" + 1.To(paragraphCount).Select(item => GetSentences()).Join("</p><p>") + "</p>";
+		}
+
+		public static string GetParagraphs(int min, int max)
+		{
+			return "<p>" + 1.To(min + Number.Between(min, max - min)).Select(item => GetSentences()).Join("</p><p>") + "</p>";
+		}
+
+		static readonly string[] WORDS = new[] {"alias", "consequatur", "aut", "perferendis", "sit", "voluptatem", "accusantium",
 "doloremque", "aperiam", "eaque", "ipsa", "quae", "ab", "illo", "inventore", "veritatis",
 "et", "quasi", "architecto", "beatae", "vitae", "dicta", "sunt", "explicabo", "aspernatur",
 "aut", "odit", "aut", "fugit", "sed", "quia", "consequuntur", "magni", "dolores", "eos", "qui",
@@ -102,5 +117,5 @@ namespace Faker
 "recusandae", "itaque", "earum", "rerum", "hic", "tenetur", "a", "sapiente", "delectus", "ut",
 "aut", "reiciendis", "voluptatibus", "maiores", "doloribus", "asperiores",
 "repellat" };
-    }
+	}
 }
