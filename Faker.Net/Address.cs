@@ -65,11 +65,10 @@ namespace Faker
 
 		public static string GetStreetAddress(bool includeSecondary = false)
 		{
-			var str = (FakerRandom.Rand.Next(3).Times("#")) + ("### " + GetStreetName());
+			var str = Number.Between(1000, 10000) + " " + GetStreetName();
 			if (includeSecondary)
 				str += " " + GetSecondaryAddress();
-
-			return str.Numerify();
+			return str;
 		}
 
 		public static string GetSecondaryAddress()
@@ -101,90 +100,6 @@ namespace Faker
 		public static string GetCountry()
 		{
 			return COUNTRY.Rand();
-		}
-
-		[Obsolete]
-		public static string ZipCode()
-		{
-			return GetZipCode();
-		}
-
-		[Obsolete]
-		public static string USState()
-		{
-			return GetUSState();
-		}
-
-		[Obsolete]
-		public static string USStateAbbr()
-		{
-			return GetUSStateAbbr();
-		}
-
-		[Obsolete]
-		public static string CityPrefix()
-		{
-			return GetCityPrefix();
-		}
-
-		[Obsolete]
-		public static string CitySuffix()
-		{
-			return GetCitySuffix();
-		}
-
-		[Obsolete]
-		public static string City()
-		{
-			return GetCity();
-		}
-
-		[Obsolete]
-		public static string StreetSuffix()
-		{
-			return GetStreetSuffix();
-		}
-
-		[Obsolete]
-		public static string StreetName()
-		{
-			return GetStreetName();
-		}
-
-		[Obsolete]
-		public static string StreetAddress(bool includeSecondary = false)
-		{
-			return GetStreetAddress(includeSecondary);
-		}
-
-		[Obsolete]
-		public static string SecondaryAddress()
-		{
-			return GetSecondaryAddress();
-		}
-
-		[Obsolete]
-		public static string UKCounty()
-		{
-			return GetUKCounty();
-		}
-
-		[Obsolete]
-		public static string UKCountry()
-		{
-			return GetUKCountry();
-		}
-
-		[Obsolete]
-		public static string UKPostcode()
-		{
-			return GetUKPostcode();
-		}
-
-		[Obsolete]
-		public static string Neighborhood()
-		{
-			return GetNeighborhood();
 		}
 
 		static readonly string[] ZIP_FORMATS = new[] { "#####", "#####-####" };

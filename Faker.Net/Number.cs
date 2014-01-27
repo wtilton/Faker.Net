@@ -18,6 +18,14 @@ namespace Faker
 			}
 		}
 
+		public static double Between(double min, double max)
+		{
+			lock (syncLock)
+			{
+				return min + (r.NextDouble() * (max - min));
+			}
+		}
+
 		public static int Below(int max)
 		{
 			lock (syncLock)

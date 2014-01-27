@@ -4,6 +4,9 @@ namespace Faker
 {
 	public static class GeoLocation
 	{
+		private static readonly Random r = new Random();
+		private static readonly object syncLock = new object();
+
 		public static double GetLat()
 		{
 			return LATLNG.Rand().Item1;
@@ -12,6 +15,16 @@ namespace Faker
 		public static double GetLng()
 		{
 			return LATLNG.Rand().Item2;
+		}
+
+		public static double GetLng(double min = -180, double max = 180)
+		{
+			return Number.Between(min, max);
+		}
+
+		public static double GetLat(double min = -90, double max = 90)
+		{
+			return Number.Between(min, max);
 		}
 
 		readonly static Tuple<double, double>[] LATLNG = new[] {
